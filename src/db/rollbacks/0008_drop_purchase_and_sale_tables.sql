@@ -1,0 +1,15 @@
+DROP TRIGGER IF EXISTS sale_detail_bi;
+DROP SEQUENCE IF EXISTS sale_detail_seq;
+DROP TABLE IF EXISTS sale_detail;
+
+DROP TRIGGER IF EXISTS sale_bi;
+DROP SEQUENCE IF EXISTS sale_seq;
+DROP TABLE IF EXISTS sale;
+
+DROP TRIGGER IF EXISTS purchase_detail_bi;
+DROP SEQUENCE IF EXISTS purchase_detail_seq;
+DROP TABLE IF EXISTS purchase_detail;
+
+DROP TRIGGER IF EXISTS purchase_bi;
+DROP SEQUENCE IF EXISTS purchase_seq;
+DROP TABLE IF EXISTS purchase;

@@ -1,0 +1,30 @@
+services:
+  oracle-db:
+    platform: "linux/amd64"
+    image: container-registry.oracle.com/database/free:23.3.0.0
+    container_name: oracle-db
+    restart: unless-stopped
+    environment:
+      ORACLE_PWD: "admin"
+      ORACLE_SID: "FREE"
+      ORACLE_CHARACTERSET: "AL32UTF8"
+    ports:
+      - "1521:1521"
+    volumes:
+      - ./volumes/db:/opt/oracle/oradata
+    networks:
+      - oracle-net
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          'echo ''SELECT 1 FROM DUAL;'' | /opt/oracle/product/23c/dbhomeFree/bin/sqlplus -S system/"$${ORACLE_PWD}"@localhost:1521/FREE || exit 1',
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+networks:
+  oracle-net:
+    driver: bridge

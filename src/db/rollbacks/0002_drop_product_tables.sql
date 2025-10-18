@@ -1,0 +1,7 @@
+DROP TRIGGER IF EXISTS product_bi;
+DROP SEQUENCE IF EXISTS product_seq;
+DROP TABLE IF EXISTS product;
+
+DROP TRIGGER IF EXISTS product_type_bi;
+DROP SEQUENCE IF EXISTS product_type_seq;
+DROP TABLE IF EXISTS product_type;
