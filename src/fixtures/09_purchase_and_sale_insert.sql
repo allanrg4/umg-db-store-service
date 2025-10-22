@@ -111,9 +111,14 @@ BEGIN
          WHERE ROWNUM = 1;
 
       SELECT id INTO v_client_id
-      FROM client
-      WHERE status = 'active'
-      AND ROWNUM = 1;
+      FROM (
+         SELECT id
+         FROM client
+         WHERE status = 'active'
+         ORDER BY DBMS_RANDOM.VALUE
+      )
+      WHERE ROWNUM = 1;
+
 
 
       v_doc := 'SALE-' || TO_CHAR(i, 'FM0000');
