@@ -1,5 +1,5 @@
 -- =============================================
---                Proveedores 
+--                    Supplier 
 -- =============================================
 
 -- Proovedor de Abarrotes, Frutas y verduras
@@ -165,5 +165,3 @@ INSERT INTO supplier_product (supplier_id, product_id, price)
 SELECT 16, id, 25.00
 FROM product
 WHERE product_type_id IN (23);
-
-select * from supplier_product;

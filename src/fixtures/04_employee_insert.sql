@@ -1,5 +1,5 @@
 -- ============================================
--- PASO 1: POBLACIÓN DE TIPOS DE EMPLEADOS
+--            TIPOS DE EMPLEADOS
 -- ============================================
 
 INSERT INTO employee_type (name) VALUES ('Gerente de Tienda');
@@ -15,11 +15,8 @@ INSERT INTO employee_type (name) VALUES ('Encargado de Inventario');
 
 COMMIT;
 
-SELECT * FROM employee_type ORDER BY id;
-
-
 -- ============================================
--- PASO 2: POBLACIÓN DE EMPLEADOS ÚNICOS
+--       POBLACIÓN DE EMPLEADOS ÚNICOS
 -- ============================================
 
 DECLARE
@@ -187,37 +184,3 @@ BEGIN
    
 END;
 /
-
-
--- ============================================
--- QUERIES DE VERIFICACIÓN
--- ============================================
-
-SELECT 
-   s.id AS tienda_id,
-   s.name AS tienda_nombre,
-   COUNT(e.id) AS total_empleados
-FROM store s
-LEFT JOIN employee e ON s.id = e.store_id
-GROUP BY s.id, s.name
-ORDER BY s.id;
-
-SELECT 
-   et.name AS tipo_empleado,
-   COUNT(e.id) AS total_empleados
-FROM employee_type et
-LEFT JOIN employee e ON et.id = e.employee_type_id
-GROUP BY et.name
-ORDER BY et.name;
-
-SELECT 
-   e.id,
-   e.first_name || ' ' || e.last_name AS nombre_completo,
-   et.name AS puesto,
-   e.address AS direccion,
-   s.name AS tienda
-FROM employee e
-JOIN employee_type et ON e.employee_type_id = et.id
-JOIN store s ON e.store_id = s.id
-WHERE s.id = 1
-ORDER BY et.id, e.id;

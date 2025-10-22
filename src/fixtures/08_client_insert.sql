@@ -1,3 +1,7 @@
+-- =========================================================
+--         Insert de Clientes con nombres aleatorios
+-- =========================================================
+
 DECLARE
     v_first_names  SYS.DBMS_DEBUG_VC2COLL := SYS.DBMS_DEBUG_VC2COLL('Luis', 'Ana', 'Carlos', 'María', 'José', 'Sofía', 'Juan', 'Lucía', 'Pedro', 'Camila',
                                                                'Miguel', 'Valentina', 'Jorge', 'Isabella', 'Diego', 'Gabriela', 'Andrés', 'Natalia', 'Fernando', 'Daniela', 'Ricardo', 'Elena', 'Santiago', 'Victoria', 
@@ -44,5 +48,3 @@ BEGIN
 END LOOP;
 END;
 /
-
-SELECT * FROM client;
