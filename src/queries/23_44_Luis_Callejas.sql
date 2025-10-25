@@ -418,7 +418,7 @@ WITH movimientos AS (
     JOIN purchase pu ON pd.purchase_id = pu.id
     JOIN store st ON pu.store_id = st.id
     JOIN supplier sup ON pu.supplier_id = sup.id
-    WHERE pu.purchase_type = 'order' AND p.id = 12
+    WHERE pu.purchase_type = 'order' AND p.id = 1
     
     UNION ALL
     
@@ -439,7 +439,7 @@ WITH movimientos AS (
     JOIN sale s ON sd.sale_id = s.id
     JOIN store st ON s.store_id = st.id
     JOIN client c ON s.client_id = c.id
-    WHERE s.sale_type = 'return' AND p.id = 12
+    WHERE s.sale_type = 'return' AND p.id = 1
     
     UNION ALL
     
@@ -460,7 +460,7 @@ WITH movimientos AS (
     JOIN sale s ON sd.sale_id = s.id
     JOIN store st ON s.store_id = st.id
     JOIN client c ON s.client_id = c.id
-    WHERE s.sale_type = 'sale' AND p.id = 12
+    WHERE s.sale_type = 'sale' AND p.id = 1
 
     UNION ALL
     
@@ -481,7 +481,7 @@ WITH movimientos AS (
     JOIN purchase pu ON pd.purchase_id = pu.id
     JOIN store st ON pu.store_id = st.id
     JOIN supplier sup ON pu.supplier_id = sup.id
-    WHERE pu.purchase_type = 'return' AND p.id = 12
+    WHERE pu.purchase_type = 'return' AND p.id = 1
 )
 SELECT 
     ROW_NUMBER() OVER (ORDER BY fecha, secuencia) AS movimiento,
@@ -499,7 +499,7 @@ SELECT
     SUM(cantidad) OVER (ORDER BY fecha, secuencia ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS saldo_cantidad,
     SUM(valor_total) OVER (ORDER BY fecha, secuencia ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS saldo_valor
 FROM movimientos
-ORDER BY fecha, secuencia;
+ORDER BY fecha, secuencia;rango
 
 -- consulta 39 (top ventas de la tienda de Guatemala) --
 SELECT 
