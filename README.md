@@ -19,3 +19,13 @@ sellers.
         - rollbacks/
     - fixtures/
     - queries/
+
+## Common Errors
+
+- **ORA-28000**: The account is locked.
+
+```sqlplus / as sysdba```
+
+```sql
+ALTER USER system IDENTIFIED BY "admin" ACCOUNT UNLOCK;
+```
